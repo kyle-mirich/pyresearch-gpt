@@ -30,7 +30,11 @@ def print_box(message, color=Fore.RESET):
     print("-" * 120)
 
 def create_directory(query):
-    directory_name = query.replace(" ", "_")
+    main_directory = 'data'  # Main data directory
+    if not os.path.exists(main_directory):
+        os.makedirs(main_directory)
+
+    directory_name = os.path.join(main_directory, query.replace(" ", "_"))
     if not os.path.exists(directory_name):
         os.makedirs(directory_name)
     return directory_name
